@@ -17,6 +17,19 @@ back_color = ColorSensor(Port.E)  #Blue
 chassis.use_gyro(True) 
 DriveBase.settings(chassis, 200)
 
+black = Color(180,9,24)
+red = Color(352,90,96)
+yellow = Color(90,29,100)
+blue = Color(213,92,85)
+green = Color(154,78,65)
+
+back_color.detectable_colors(
+    [
+        black, red, yellow, blue, green
+    ]
+)
+
+# print(back_color.color(True))
 chassis.straight(1000)
 # print(front_color.hsv())
 # left_arm.run_time(300,5000)
