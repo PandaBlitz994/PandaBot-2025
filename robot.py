@@ -23,14 +23,84 @@ Color.RED = Color(352,90,96)
 Color.YELLOW = Color(90,29,100)
 Color.BLUE = Color(213,92,85)
 Color.GREEN = Color(154,78,65)
-ccolors = (Color.BLACK, Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN)
-back_color.detectable_colors(ccolors)
+run_colors = (Color.BLACK, Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN)
 
-color = back_color.color()
-if color == Color.BLACK:
-    print("hello")
-elif color == Color.RED:
-    print("hello")
-elif color == Color.YELLOW:
-    
-elif color == Color.BLUE:
+###########################
+
+def cycle(iterable):
+    iterator = iter(iterable)  
+    while True:
+        try:
+            yield next(iterator)  
+        except StopIteration:  
+            iterator = iter(iterable)  
+
+back_color.detectable_colors(run_colors)
+color_cycle = cycle(run_colors)
+color_map = {
+    Color.RED: 'R',
+    Color.GREEN: 'G',
+    Color.BLUE: 'B',
+    Color.YELLOW: 'Y',
+    Color.BLACK: 'K',
+}
+
+while back_color.color() != next(color_cycle):
+    pass
+
+menu = [color_map[back_color.color()]]
+for i in range(len(run_colors)-1):
+    menu.append(color_map[next(color_cycle)])
+
+
+selected = hub_menu(*menu) # pylint: disable=E1111
+
+if selected == "R":
+    import fly_mission
+elif selected == "G":
+    import drive_mission
+elif selected == "B":
+    import zigzag
+print(selected)
+
+
+###########################
+
+# def start(n):
+#     while not Button.CENTER in hub.buttons.pressed():
+#         if n == 1:
+#             chassis.straight(100)
+#         if n == 2:
+#             chassis.straight(100)
+#         if n == 3:
+#             chassis.straight(100)
+#         if n == 4:
+#             chassis.straight(100)
+#         if n == 5:
+#             chassis.straight(100)
+#         elif (Button.LEFT in hub.buttons.pressed()):
+#             break
+#         elif (Button.RIGHT in hub.buttons.pressed()):
+#             break
+        
+
+# if back_color.color() == Color.RED:
+#     hub.display.number(1)
+#     start(1)
+# elif back_color.color() == Color.BLUE:
+#     hub.display.number(2)
+#     start(2)
+# elif back_color.color() == Color.GREEN:
+#     hub.display.number(3)
+#     start(3)
+# elif back_color.color() == Color.BLACK:
+#     hub.display.number(4)
+#     start(4)
+# elif back_color.color() == Color.YELLOW:
+#     hub.display.number(5)
+#     start(5)
+
+
+
+wait(5000)
+if selected
