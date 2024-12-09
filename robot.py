@@ -27,13 +27,15 @@ run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
 
 #runs
 def blue():
-    right_arm.run_angle(300,-350, wait=False)
+    right_arm.run_angle(200,-350, wait=False)
     chassis.straight(287)
     chassis.turn(51)
     chassis.straight(100)
     right_arm.run_angle(500,350)
-    chassis.straight(-190)
-    chassis.turn(140)
+    chassis.straight(-210)
+    chassis.turn(139)
+    chassis.straight(-310)
+    chassis.curve
 def black():
     right_arm.run_angle(200, 100, wait=False)
     chassis.straight(560,then=Stop.NONE)
