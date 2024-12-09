@@ -27,8 +27,13 @@ run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
 
 #runs
 def blue():
-    print("britneyyyy")
-    left_arm.run_time(200, -5000)
+    right_arm.run_angle(300,-350, wait=False)
+    chassis.straight(287)
+    chassis.turn(51)
+    chassis.straight(100)
+    right_arm.run_angle(500,350)
+    chassis.straight(-190)
+    chassis.turn(140)
 def black():
     right_arm.run_angle(200, 100, wait=False)
     chassis.straight(560,then=Stop.NONE)
@@ -36,6 +41,9 @@ def black():
     chassis.straight(50)
     right_arm.run_angle(400, 1000,)
     
+def red():
+    right_arm.run_angle(400,40)
+    chassis.straight(1160)
 
 #Run selection
 def cycle(iterable):
@@ -67,10 +75,9 @@ for i in range(len(run_colors)-1):
 selected = hub_menu(*menu) # pylint: disable=E1111
 
 if selected == "R":
-    chassis.straight(100)
+    red()
 elif selected == "B":
-    left_arm.run_time(200, -5000)
-    # blue()
+    blue()
 elif selected == "G":
     chassis.straight(100)
 elif selected == "K":
