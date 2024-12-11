@@ -33,9 +33,12 @@ def blue():
     chassis.straight(100)
     right_arm.run_angle(500,350)
     chassis.straight(-210)
-    chassis.turn(139)
-    chassis.straight(-310)
-    chassis.curve
+    chassis.turn(143)
+    chassis.straight(-280)
+    chassis.turn(-40)
+    chassis.straight(-167)
+    chassis.turn(120)
+    chassis.straight(-120)
 def black():
     right_arm.run_angle(200, 100, wait=False)
     chassis.straight(560,then=Stop.NONE)
