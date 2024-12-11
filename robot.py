@@ -27,16 +27,20 @@ run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
 
 #runs
 def blue():
-    right_arm.run_angle(200,-350, wait=False)
-    chassis.straight(287)
-    chassis.turn(51)
+    right_arm.run_angle(200,-100, wait=False)
+    chassis.straight(285)
+    chassis.turn(45)
+    right_arm.run_angle(200,-250)
     chassis.straight(100)
-    right_arm.run_angle(500,350)
-    chassis.straight(-210)
-    chassis.turn(143)
+    right_arm.run_angle(500,350)  # boat done
+    chassis.straight(-200)
+    chassis.curve(200,90)
+    chassis.straight(-250)
+    chassis.turn(80) 
+    # right_arm.run_angle(400, -350, wait=False)
     chassis.straight(-280)
     chassis.turn(-40)
-    chassis.straight(-167)
+    chassis.straight(-180)
     chassis.turn(120)
     chassis.straight(-120)
 def black():
@@ -47,8 +51,9 @@ def black():
     right_arm.run_angle(400, 1000,)
     
 def red():
-    right_arm.run_angle(400,40)
-    chassis.straight(1160)
+    right_arm.run_time(500, 10000)
+    # right_arm.run_angle(400,40)
+    # chassis.straight(1160)
 
 #Run selection
 def cycle(iterable):
@@ -88,6 +93,7 @@ elif selected == "G":
 elif selected == "K":
     black()
 elif selected == "Y":
-    chassis.straight(400)
+    left_wheel.run_time(300, 10000, wait=False)
+    right_wheel.run_time(300, 10000)
             
 print(selected)
