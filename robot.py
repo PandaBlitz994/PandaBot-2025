@@ -29,21 +29,24 @@ print(hub.battery.voltage())
 #runs
 def blue():
     right_arm.run_angle(200,-100, wait=False)
-    chassis.straight(285)
+    chassis.straight(290)
     chassis.turn(45)
-    right_arm.run_angle(200,-200)
-    chassis.straight(100)
+    right_arm.run_angle(200,-200, wait=False)
+    chassis.straight(-50)
+    chassis.straight(150)
     right_arm.run_angle(500,300)  # boat done
     chassis.straight(-225)
     right_arm.run_angle(450, -125, wait=False)
-    chassis.curve(200,75)
+    chassis.curve(200, 70)
     chassis.straight(-250) #cril
-    chassis.turn(60) 
+    chassis.turn(65) 
     chassis.straight(-280) #cril
-    # chassis.curve(200,75)
-    chassis.turn(86)
+    chassis.curve(100,55)
+    # chassis.turn(86)
     chassis.straight(-200)#plankton
     # right_arm.run_angle(200,-100, wait=False)
+    chassis.straight(100)
+    chassis.turn(30)
     chassis.straight(70)
     chassis.turn(90)
     chassis.straight(-530)
