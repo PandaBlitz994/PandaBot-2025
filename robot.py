@@ -29,11 +29,11 @@ print(hub.battery.voltage())
 #runs
 def blue():
     right_arm.run_angle(200,-100, wait=False)
-    chassis.straight(290)
+    chassis.straight(285)
     chassis.turn(45)
     right_arm.run_angle(200,-200, wait=False)
     chassis.straight(-50)
-    chassis.straight(150)
+    chassis.straight(125)
     right_arm.run_angle(500,300)  # boat done
     chassis.straight(-225)
     right_arm.run_angle(450, -125, wait=False)
@@ -41,15 +41,20 @@ def blue():
     chassis.straight(-250) #cril
     chassis.turn(65) 
     chassis.straight(-280) #cril
-    chassis.curve(100,55)
+    chassis.curve(100,50)
     # chassis.turn(86)
     chassis.straight(-200)#plankton
     # right_arm.run_angle(200,-100, wait=False)
+    # chassis.straight(100)
+    # chassis.turn(30)
+    chassis.curve(125,42)
+    # wait(10000)
+    chassis.straight(-100)
     chassis.straight(100)
-    chassis.turn(30)
-    chassis.straight(70)
-    chassis.turn(90)
-    chassis.straight(-530)
+    chassis.curve(100, 90)
+    chassis.straight(-350)
+    chassis.curve(-250, 45)
+    chassis.straight(-350)
 def black():
     right_arm.run_angle(200, 100, wait=False)
     chassis.straight(560,then=Stop.NONE)
@@ -100,7 +105,9 @@ elif selected == "G":
 elif selected == "K":
     black()
 elif selected == "Y":
-    left_wheel.run_time(300, 10000, wait=False)
-    right_wheel.run_time(300, 10000)
+    left_wheel.dc(100)
+    right_wheel.dc(100)
+    while "1 + 1 = 3":
+        pass
             
 print(selected)
