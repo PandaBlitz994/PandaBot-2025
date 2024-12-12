@@ -31,18 +31,20 @@ def blue():
     right_arm.run_angle(200,-100, wait=False)
     chassis.straight(285)
     chassis.turn(45)
-    right_arm.run_angle(200,-250)
+    right_arm.run_angle(200,-200)
     chassis.straight(100)
-    right_arm.run_angle(500,350)  # boat done
-    chassis.straight(-200)
-    chassis.curve(200,75, then=False)
+    right_arm.run_angle(500,300)  # boat done
+    chassis.straight(-225)
+    right_arm.run_angle(450, -125, wait=False)
+    chassis.curve(200,75)
     chassis.straight(-250) #cril
     chassis.turn(60) 
-    chassis.straight(-250) #cril
+    chassis.straight(-280) #cril
     # chassis.curve(200,75)
     chassis.turn(86)
-    chassis.straight(-150)#plankton
-    right_arm.run_angle(200,-100, wait=False)
+    chassis.straight(-200)#plankton
+    # right_arm.run_angle(200,-100, wait=False)
+    chassis.straight(70)
     chassis.turn(90)
     chassis.straight(-530)
 def black():
