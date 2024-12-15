@@ -28,6 +28,7 @@ run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
 print(hub.battery.voltage())
 #runs
 def blue():
+    chassis.settings(straight_speed=300, turn_rate=225)
     right_arm.run_angle(200,-100, wait=False)
     chassis.straight(285)
     chassis.turn(45)
@@ -37,10 +38,13 @@ def blue():
     right_arm.run_angle(500,300)  # boat done
     chassis.straight(-225)
     right_arm.run_angle(450, -125, wait=False)
-    chassis.curve(200, 70)
-    chassis.straight(-250) #cril
-    chassis.turn(65) 
-    chassis.straight(-280) #cril
+    chassis.curve(200, 75)
+    chassis.straight(-150) #cril
+    chassis.curve(400, 20)
+    # chassis.turn(60) 
+    # chassis.straight(-80) #cril
+    # wait(10000)
+    chassis.curve(-150,-45)
     chassis.curve(100,50)
     # chassis.turn(86)
     chassis.straight(-200)#plankton
@@ -52,8 +56,8 @@ def blue():
     chassis.straight(-100)
     chassis.straight(100)
     chassis.curve(100, 90)
-    chassis.straight(-350)
-    chassis.curve(-250, 45)
+    chassis.straight(-350, then = Stop.NONE)
+    chassis.curve(-250, 45, then= Stop.NONE)
     chassis.straight(-350)
 def black():
     right_arm.run_angle(200, 100, wait=False)
