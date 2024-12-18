@@ -72,6 +72,11 @@ def red():
     # right_arm.run_angle(400,40)
     # chassis.straight(1160)
 
+def green():
+    chassis.straight(450)
+    chassis.turn(-35)
+    chassis.straight(70)
+    left_arm.run_angle(200, 200)
 #Run selection
 def cycle(iterable):
     iterator = iter(iterable)  
@@ -106,7 +111,7 @@ if selected == "R":
 elif selected == "B":
     blue()
 elif selected == "G":
-    chassis.straight(100)
+    green()
 elif selected == "K":
     black()
 elif selected == "Y":
