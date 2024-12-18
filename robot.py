@@ -72,7 +72,7 @@ def red():
     # right_arm.run_angle(400,40)
     # chassis.straight(1160)
 
-def green():
+def yellow():
     chassis.straight(450)
     chassis.turn(-35)
     chassis.straight(70)
@@ -111,13 +111,13 @@ if selected == "R":
 elif selected == "B":
     blue()
 elif selected == "G":
-    green()
-elif selected == "K":
-    black()
-elif selected == "Y":
     left_wheel.dc(100)
     right_wheel.dc(100)
     while "1 + 1 = 3":
         pass
+elif selected == "K":
+    black()
+elif selected == "Y":
+    yellow()                                                                                                                                                                                                                                  
             
 print(selected)
