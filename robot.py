@@ -14,7 +14,7 @@ right_arm = Motor(Port.B) #Purple
 chassis = DriveBase(left_wheel, right_wheel, 62.4, 81)
 front_color = ColorSensor(Port.D) #Green
 back_color = ColorSensor(Port.C)  #Blue
-chassis.use_gyro(True) 
+chassis.use_gyro(True)
 DriveBase.settings(chassis, 200)
 
 # Setting detectebale colors for back light sensor
@@ -24,7 +24,7 @@ Color.YELLOW = Color(90,29,100)
 Color.BLUE = Color(213,92,85)
 Color.GREEN = Color(154,78,65)
 run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
-
+print("test")
 print(hub.battery.voltage())
 #runs
 def blue():
