@@ -24,6 +24,10 @@ Color.YELLOW = Color(90,29,100)
 Color.BLUE = Color(213,92,85)
 Color.GREEN = Color(154,78,65)
 run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
+chassis.straight(200)
+right_arm.run_time(1000, 1750)
+right_arm.run_time(-1000, 1750)
+chassis.straight(-200)
 
 print(hub.battery.voltage())
 #runs
