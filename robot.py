@@ -24,10 +24,13 @@ Color.YELLOW = Color(90,29,100)
 Color.BLUE = Color(213,92,85)
 Color.GREEN = Color(154,78,65)
 run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
-chassis.straight(200)
-right_arm.run_time(1000, 1750)
-right_arm.run_time(-1000, 1750)
-chassis.straight(-200)
+# chassis.straight(200)
+# right_arm.run_time(1000, 1750)
+# right_arm.run_time(-1000, 1750)
+# chassis.straight(-200)
+
+
+
 
 print(hub.battery.voltage())
 #runs
@@ -72,9 +75,24 @@ def black():
     right_arm.run_angle(400, 1000,)
     
 def red():
-    right_arm.run_time(500, 10000)
-    # right_arm.run_angle(400,40)
-    # chassis.straight(1160)
+    hub.imu.reset_heading(0)
+    chassis.curve(500, 30, then=Stop.NONE)
+    chassis.straight(300)
+    left_arm.run_time(1000,2000)
+    chassis.straight(-700)
+    chassis.use_gyro(False)
+    while Button.CENTER not in hub.buttons.pressed():
+        pass
+    chassis.use_gyro(True)
+    chassis.straight(300, then=Stop.NONE)
+    right_wheel.dc(100)
+    left_wheel.dc(75)
+    wait(3000)
+    chassis.straight(-100)
+    chassis.curve(-100, 90, then=Stop.NONE)
+    chassis.straight(-200)
+    chassis.curve(-100, 90)
+    chassis.curve(-2000, -10)
 
 def yellow():
     chassis.straight(450)
