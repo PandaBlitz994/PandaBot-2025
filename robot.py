@@ -20,10 +20,18 @@ DriveBase.settings(chassis, 200)
 # Setting detectebale colors for back light sensor
 Color.BLACK = Color(180, 9, 24)
 Color.RED = Color(352, 90, 96)
+Color.MAGENTA = Color(340, 84, 87)
 Color.YELLOW = Color(90, 29, 100)
 Color.BLUE = Color(213, 92, 85)
 Color.GREEN = Color(154, 78, 65)
-run_colors = (Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW)
+run_colors = (
+    Color.RED,
+    Color.BLUE,
+    Color.GREEN,
+    Color.BLACK,
+    Color.YELLOW,
+    Color.MAGENTA,
+)
 # chassis.straight(200)
 # right_arm.run_time(1000, 1750)
 # right_arm.run_time(-1000, 1750)
@@ -55,6 +63,8 @@ def PID_straight(target_distance, target_percentage, kp=0.0):
     chassis.stop()
 
 
+while "1+1 = 3" == False:  # change to true for testing colors
+    print(back_color.hsv())
 print(hub.battery.voltage())
 
 
@@ -106,30 +116,17 @@ def black():
 
 
 def red():
-    ### Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
-    # hub.imu.reset_heading(0)
-    # chassis.curve(500, 35, then=Stop.NONE)
-    # chassis.straight(300)
-    # left_arm.run_time(1000, 2000)
-    # chassis.straight(-700)
-    # chassis.use_gyro(False)
-    # while Button.RIGHT not in hub.buttons.pressed():
-    #     pass
-    # chassis.use_gyro(True)
-    chassis.straight(500, then=Stop.NONE)
-    right_wheel.run_angle(450, 750, wait=False)
-    left_wheel.run_angle(350, 583)
-    chassis.straight(-100)
-    chassis.curve(-100, 90, then=Stop.NONE)
+    ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
+    hub.imu.reset_heading(0)
+    chassis.curve(500, 35, then=Stop.NONE)
+    chassis.straight(300)
+    left_arm.run_time(1000, 2000)
+    chassis.straight(-700)
     chassis.use_gyro(False)
-    chassis.straight(-200)
-    chassis.use_gyro(True)
-    chassis.straight(200)
 
-    chassis.curve(-200, 90)
-    chassis.curve(-2000, -10)
-    wait(500)
-    chassis.straight(-300)
+
+def red_2():
+    chassis.straight(3000)
 
 
 def yellow():
@@ -157,6 +154,7 @@ color_map = {
     Color.GREEN: "G",
     Color.BLACK: "K",
     Color.YELLOW: "Y",
+    Color.MAGENTA: "M",
 }
 
 while back_color.color() != next(color_cycle):
@@ -182,5 +180,7 @@ elif selected == "K":
     black()
 elif selected == "Y":
     yellow()
+elif selected == "M":
+    red_2()
 
 print(selected)
