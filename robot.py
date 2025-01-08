@@ -61,6 +61,17 @@ def PID_straight(target_distance, target_percentage, kp=0.0):
         )
         wait(10)
     chassis.stop()
+def turn_to(angle):
+    print(hub.imu.heading())
+    start_angle = (hub.imu.heading() + 360) % 360  # 208
+    print(start_angle)
+    deg_to_turn = (angle - start_angle) % 360  # 242
+    print(deg_to_turn)
+
+    if deg_to_turn >= 180:
+        chassis.turn(deg_to_turn - 360)
+    else:
+        chassis.turn(deg_to_turn)
 
 
 while "1+1 = 3" == False:  # change to true for testing colors
@@ -105,7 +116,13 @@ def blue():
 
 
 def black():
-    right_arm.run_angle(200, 100, wait=False)
+    right_arm.run_time(-300, 3000, wait=False)
+    chassis.curve(475, 30, then=Stop.NONE)
+    chassis.straight(300)
+    chassis.settings(turn_rate=100)
+    turn_to(-80)
+    chassis.straight(200)
+    right_arm.run_time(300, 1000)
     chassis.straight(560, then=Stop.NONE)
     chassis.curve(100, -90)
     chassis.straight(50)
