@@ -119,10 +119,11 @@ def blue():
 def black():
     hub.imu.reset_heading(0)
     right_arm.run_time(-300, 3000, wait=False)
-    chassis.curve(475, 30, then=Stop.NONE)
+    chassis.curve(500, 30, then=Stop.NONE)
     chassis.straight(280)
     chassis.settings(turn_rate=100)
     turn_to(-90)
+    wait(300)
     chassis.settings(straight_speed=100)
     chassis.straight(125)
     chassis.settings(straight_speed=200)
@@ -135,17 +136,22 @@ def black():
     right_arm.run_angle(-100, 60, wait=False)
     chassis.straight(-250)
     turn_to(15)
-    chassis.straight(200, wait=False)
-    wait(1000)
-    right_arm.run_time(200, 500)
+    chassis.straight(160)
     chassis.straight(-30)
-    chassis.turn(30, wait=False)
+    chassis.turn(-10)
+    right_arm.run_time(200, 500)
     chassis.straight(30)
     right_arm.run_time(-300, 1500)
+    chassis.straight(-50)
+    turn_to(-90)
+    chassis.straight(-1200, then=Stop.NONE)
+    chassis.curve(-200, 45)
     chassis.straight(-100)
-    chassis.straight(300, wait=False)
-    turn_to(90)
-
+    chassis.straight(150)
+    chassis.curve(200, -45)
+    # chassis.straight(200)
+    # chassis.straight(300, wait=False)
+    # turn_to(90)
 
     
 
@@ -160,7 +166,7 @@ def red():
 
 
 def red_2():
-    chassis.straight(3000)
+    chassis.straight(-200)
 
 
 def yellow():
