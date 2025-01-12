@@ -61,6 +61,7 @@ def PID_straight(target_distance, target_percentage, kp=0.0):
         )
         wait(10)
     chassis.stop()
+
 def turn_to(angle):
     print(hub.imu.heading())
     start_angle = (hub.imu.heading() + 360) % 360  # 208
@@ -74,9 +75,9 @@ def turn_to(angle):
         chassis.turn(deg_to_turn)
 
 
-while "1+1 = 3" == False:  # change to true for testing colors
-    print(back_color.hsv())
-print(hub.battery.voltage())
+# while "1+1 = 3" == False:  # change to true for testing colors
+#     print(back_color.hsv())
+# print(hub.battery.voltage())
 
 
 # runs
@@ -116,21 +117,37 @@ def blue():
 
 
 def black():
+    hub.imu.reset_heading(0)
     right_arm.run_time(-300, 3000, wait=False)
     chassis.curve(475, 30, then=Stop.NONE)
-    chassis.straight(300)
+    chassis.straight(280)
     chassis.settings(turn_rate=100)
-    turn_to(-80)
-    chassis.straight(200)
+    turn_to(-90)
+    chassis.settings(straight_speed=100)
+    chassis.straight(125)
+    chassis.settings(straight_speed=200)
     right_arm.run_time(300, 1000)
-    chassis.straight(560, then=Stop.NONE)
-    chassis.curve(100, -90)
-    chassis.straight(50)
-    right_arm.run_angle(
-        400,
-        1000,
-    )
+    chassis.straight(-50)
+    chassis.turn(45)
+    chassis.settings(straight_speed=350)
+    chassis.straight(230)
+    chassis.settings(straight_speed=200)
+    right_arm.run_angle(-100, 60, wait=False)
+    chassis.straight(-250)
+    turn_to(15)
+    chassis.straight(200, wait=False)
+    wait(1000)
+    right_arm.run_time(200, 500)
+    chassis.straight(-30)
+    chassis.turn(30, wait=False)
+    chassis.straight(30)
+    right_arm.run_time(-300, 1500)
+    chassis.straight(-100)
+    chassis.straight(300, wait=False)
+    turn_to(90)
 
+
+    
 
 def red():
     ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
