@@ -62,6 +62,7 @@ def PID_straight(target_distance, target_percentage, kp=0.0):
         wait(10)
     chassis.stop()
 
+
 def turn_to(angle):
     print(hub.imu.heading())
     start_angle = (hub.imu.heading() + 360) % 360  # 208
@@ -147,13 +148,13 @@ def black():
     chassis.straight(-1200, then=Stop.NONE)
     chassis.curve(-200, 45)
     chassis.straight(-100)
-    chassis.straight(150)
+    chassis.straight(105)
     chassis.curve(200, -45)
-    # chassis.straight(200)
-    # chassis.straight(300, wait=False)
-    # turn_to(90)
+    chassis.straight(-200)
+    chassis.turn(40)
+    right_arm.run_time(300, 3000, wait=False)
+    chassis.straight(500)
 
-    
 
 def red():
     ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
