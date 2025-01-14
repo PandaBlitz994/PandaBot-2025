@@ -179,7 +179,7 @@ def yellow():
     chassis.straight(70)
     left_arm.run_angle(200, 200)
 
-
+print(str((hub.battery.current() / 2000) * 100) + "% Battery")
 # Run selection
 def cycle(iterable):
     iterator = iter(iterable)
