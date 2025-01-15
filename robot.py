@@ -119,7 +119,7 @@ def blue():
 
 def black():
     hub.imu.reset_heading(0)
-    right_arm.run_time(-300, 3000, wait=False)
+    right_arm.run_time(-300, 1800, wait=False)
     chassis.curve(550, 30, then=Stop.NONE)
     chassis.straight(260)
     chassis.settings(turn_rate=100)
@@ -148,8 +148,8 @@ def black():
     chassis.straight(-80)
     turn_to(-90)
     turn_to(-90)
-    chassis.straight(-800, then=Stop.NONE)
-    chassis.curve(-700, -20, then=Stop.NONE)
+    chassis.straight(-1000, then=Stop.NONE)
+    chassis.curve(-700, 20, then=Stop.NONE)
     chassis.straight(-200)
     turn_to(-90)
     wait(200)
