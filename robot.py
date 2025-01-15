@@ -120,9 +120,8 @@ def blue():
 def black():
     hub.imu.reset_heading(0)
     right_arm.run_time(-300, 1800, wait=False)
-    chassis.settings(400)
     chassis.curve(500, 30, then=Stop.NONE)
-    chassis.straight(120)
+    chassis.straight(260)
     chassis.settings(turn_rate=100)
     turn_to(-85)
     wait(300)
@@ -151,11 +150,11 @@ def black():
     turn_to(-90)
     turn_to(-90)
     chassis.straight(-700, then=Stop.NONE)
-    chassis.curve(-700, -20, then=Stop.NONE)
+    chassis.curve(-900, -15, then=Stop.NONE)
     chassis.straight(-200)
     turn_to(-90)
     wait(200)
-    chassis.straight(-50)
+    chassis.straight(-100)
     turn_to(-135)
     chassis.straight(-350)
     chassis.straight(105)
@@ -168,9 +167,10 @@ def black():
 
 def red():
     ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
+    chassis.settings(400)
     hub.imu.reset_heading(0)
     chassis.curve(500, 35, then=Stop.NONE)
-    chassis.straight(300)
+    chassis.straight(150)
     left_arm.run_time(1000, 2000)
     chassis.straight(-700)
     chassis.use_gyro(False)
@@ -184,12 +184,15 @@ def red_2():
     chassis.curve(-75, 90, then=Stop.NONE)
     chassis.straight(200)
     turn_to(-90)
-    chassis.curve(-250, 90)
-    chassis.straight(-800)
+    chassis.curve(-220, 90)
+    chassis.straight(-400)
     chassis.straight(50, then=Stop.NONE)
+    chassis.settings(400)
     chassis.curve(170, 180)
     turn_to(0)
-    chassis.straight(200)
+    chassis.straight(300, then=Stop.NONE)
+    chassis.curve(500, 50, then=Stop.NONE)
+    chassis.straight(400)
 
 
 def yellow():
