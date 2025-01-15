@@ -31,6 +31,7 @@ run_colors = (
     Color.BLACK,
     Color.YELLOW,
     Color.MAGENTA,
+    Color.WHITE,
 )
 # chassis.straight(200)
 # right_arm.run_time(1000, 1750)
@@ -138,7 +139,7 @@ def black():
     chassis.settings(straight_speed=200)
     right_arm.run_angle(-100, 110, wait=False)
     chassis.straight(-180)
-    #PUT THE GUY WHERE HE BELONGS!
+    # PUT THE GUY WHERE HE BELONGS!
     turn_to(20)
     chassis.straight(110)
     chassis.straight(-30)
@@ -161,7 +162,7 @@ def black():
     chassis.curve(200, -45, then=Stop.NONE)
     chassis.straight(250, then=Stop.NONE)
     right_arm.run_time(300, 3000, wait=False)
-    chassis.curve(200, -45,  then=Stop.NONE)
+    chassis.curve(200, -45, then=Stop.NONE)
     chassis.straight(500)
 
 
@@ -201,7 +202,17 @@ def yellow():
     chassis.straight(70)
     left_arm.run_angle(200, 200)
 
+
+def green():
+    chassis.settings(spee)
+    chassis.straight(100)
+    chassis.curve(400, 38.5)
+    chassis.straight(200)
+
+
 print(str((hub.battery.current() / 2000) * 100) + "% Battery")
+
+
 # Run selection
 def cycle(iterable):
     iterator = iter(iterable)
@@ -221,6 +232,7 @@ color_map = {
     Color.BLACK: "K",
     Color.YELLOW: "Y",
     Color.MAGENTA: "M",
+    Color.WHITE: "W",
 }
 
 while back_color.color() != next(color_cycle):
@@ -238,15 +250,17 @@ if selected == "R":
 elif selected == "B":
     blue()
 elif selected == "G":
-    left_wheel.dc(100)
-    right_wheel.dc(100)
-    while "1 + 1 = 3":
-        pass
+    green()
 elif selected == "K":
     black()
 elif selected == "Y":
     yellow()
 elif selected == "M":
     red_2()
+elif selected == "W":
+    left_wheel.dc(100)
+    right_wheel.dc(100)
+    while "1 + 1 = 3":
+        pass
 
 print(selected)
