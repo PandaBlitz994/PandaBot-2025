@@ -84,39 +84,33 @@ def turn_to(angle):
 
 # runs
 def blue():
-    chassis.settings(straight_speed=350, turn_rate=225)
-    right_arm.run_angle(200, -100, wait=False)
+    right_arm.run_angle(200,-100, wait=False)
     chassis.straight(285)
     chassis.turn(45)
-    right_arm.run_angle(200, -200, wait=False)
+    right_arm.run_angle(200,-200, wait=False)
     chassis.straight(-50)
-    chassis.straight(125)
-    right_arm.run_angle(500, 300)  # boat done
+    chassis.straight(80)
+    right_arm.run_angle(500,300)  # boat done
     chassis.straight(-225)
     right_arm.run_angle(450, -125, wait=False)
-    chassis.curve(200, 75)
-    chassis.straight(-200)  # cril
-    chassis.curve(600, 35)
-    # chassis.turn(60)
-    # chassis.straight(-80) #cril
-    # wait(10000)
-    chassis.straight(-800)
-    # chassis.curve(-150,-45)
-    # chassis.turn(80)
-    chassis.curve(100, 65)
+    chassis.curve(200, 70)
+    chassis.straight(-250) #cril
+    chassis.turn(65) 
+    chassis.straight(-280) #cril
+    chassis.curve(100,50)
     # chassis.turn(86)
-    chassis.straight(-200)  # plankton
+    chassis.straight(-200)#plankton
     # right_arm.run_angle(200,-100, wait=False)
     # chassis.straight(100)
     # chassis.turn(30)
-    chassis.curve(200, 90, then=Stop.NONE)
-    chassis.curve(400, -30)
-    chassis.straight(-600)
+    chassis.curve(125,42)
     # wait(10000)
-    chassis.straight(300)
-    chassis.turn(45)
-    chassis.straight(-1000)
-
+    chassis.straight(-100)
+    chassis.straight(100)
+    chassis.curve(100, 90)
+    chassis.straight(-350)
+    chassis.curve(-250, 45)
+    chassis.straight(-350)
 
 def black():
     hub.imu.reset_heading(0)
@@ -204,10 +198,45 @@ def yellow():
 
 
 def green():
-    chassis.settings(spee)
-    chassis.straight(100)
-    chassis.curve(400, 38.5)
+    chassis.settings(250)
+    chassis.straight(50, then=Stop.NONE)
+    chassis.curve(300, 60)
+    turn_to(0)
+    chassis.straight(350, then=Stop.NONE)
+    chassis.curve(410, -30)
+    chassis.curve(150, 30)
+    chassis.settings(200)
+    chassis.straight(-430)
+    chassis.settings(100)
+    chassis.curve(900, 20)
+    turn_to(0)
+    chassis.straight(350)
+    turn_to(150)
+    chassis.straight(120)
+    turn_to(135)
+    right_arm.run_angle(1000, 350, wait=False)
+    chassis.straight(400)
+    chassis.straight(-70)
+    right_arm.run_time(300, 3000, wait=False)
+    wait(700)
+    chassis.straight(80)
+    right_arm.run_angle(-300, 700, wait=False)
+    wait(800)
+    chassis.straight(-100)
+    turn_to(0)
     chassis.straight(200)
+    chassis.curve(250, 45, then=Stop.NONE)
+    chassis.curve(100, -45)
+    chassis.straight(-500)
+
+    # chassis.curve(200, 180)
+    # chassis.settings(50)
+    # chassis.straight(-70)
+    # chassis.straight(200)
+    # chassis.curve(600, -45)
+    
+
+
 
 
 print(str((hub.battery.current() / 2000) * 100) + "% Battery")
