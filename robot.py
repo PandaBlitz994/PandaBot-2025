@@ -82,6 +82,7 @@ def turn_to(angle):
 # print(hub.battery.voltage())
 
 
+
 # runs
 def blue():
     hub.imu.reset_heading(0)
@@ -113,7 +114,7 @@ def blue():
     turn_to(0)
     chassis.straight(-300, then=Stop.NONE)
     chassis.curve(-300, 45, then=Stop.NONE)
-    chassis.straight(500)
+    chassis.straight(-500)
     
 
 def black():
@@ -210,7 +211,7 @@ def green():
     chassis.curve(300, 60)
     turn_to(0)
     chassis.straight(350, then=Stop.NONE)
-    chassis.curve(430, -30)
+    chassis.curve(410, -30)
     chassis.curve(150, 30)
     chassis.settings(200)
     chassis.straight(-450)
