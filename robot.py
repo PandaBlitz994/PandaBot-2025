@@ -38,7 +38,6 @@ run_colors = (
 # right_arm.run_time(-1000, 1750)
 # chassis.straight(-200)
 
-
 def PID_straight(target_distance, target_percentage, kp=0.0):
     while chassis.distance() < target_distance:
         error = hub.imu.heading()
@@ -63,6 +62,14 @@ def PID_straight(target_distance, target_percentage, kp=0.0):
         wait(10)
     chassis.stop()
 
+def till_black(speed, turn_rate):
+    chassis.drive(speed, turn_rate)
+
+    while back_color.reflection() > 20:
+        print(back_color.color())
+        pass
+
+    chassis.stop()
 
 def turn_to(angle):
     print(hub.imu.heading())
@@ -202,6 +209,8 @@ def yellow():
 
 def green():
     hub.imu.reset_heading(0)
+    straight_time(-80, 500) ### just reseting so itll be straigther
+    hub.imu.reset_heading(0)
     chassis.settings(250)
     chassis.straight(50, then=Stop.NONE)
     chassis.curve(310, 60)
@@ -210,7 +219,7 @@ def green():
     chassis.curve(405, -30)
     chassis.curve(150, 30)
     chassis.settings(200)
-    chassis.straight(-320)
+    till_black(-50, 0)
     chassis.settings(75)
     chassis.straight(350)
     chassis.settings(200)
@@ -220,8 +229,8 @@ def green():
     chassis.straight(150)
     turn_to(135)
     right_arm.run_angle(1000, 350, wait=False)
-    straight_time(90, 5000)
-    chassis.straight(-70)
+    straight_time(90, 2500)
+    chassis.straight(-60)
     right_arm.run_time(300, 3000, wait=False)
     wait(700)
     chassis.straight(80)
