@@ -209,38 +209,47 @@ def yellow():
 
 def green():
     hub.imu.reset_heading(0)
+    chassis.settings(straight_acceleration=500)
     straight_time(-80, 500) ### just reseting so itll be straigther
     hub.imu.reset_heading(0)
     chassis.settings(250)
     chassis.straight(50, then=Stop.NONE)
-    chassis.curve(310, 60)
+    chassis.curve(290, 60)
     turn_to(0)
     chassis.straight(350, then=Stop.NONE)
-    chassis.curve(405, -30)
+    chassis.curve(410, -30)
     chassis.curve(150, 30)
     chassis.settings(200)
-    till_black(-50, 0)
+    chassis.straight(-100)
+    till_black(-70, 0)
+    chassis.straight(-175)
     chassis.settings(75)
     chassis.straight(350)
     chassis.settings(200)
+    chassis.straight(50)
     turn_to(0)
     chassis.curve(350, 40)
     turn_to(160)
-    chassis.straight(150)
+    chassis.straight(160)
     turn_to(135)
-    right_arm.run_angle(1000, 350, wait=False)
+    right_arm.run_angle(1000, 200, wait=False)
     straight_time(90, 2500)
-    chassis.straight(-60)
-    right_arm.run_time(300, 3000, wait=False)
-    wait(700)
+    chassis.straight(-40)
+    right_arm.run_time(350, 3000, wait=False)
+    wait(1800)
     chassis.straight(80)
     right_arm.run_angle(-300, 2000, wait=False)
     wait(800)
-    chassis.settings(500)
-    chassis.straight(-100)
+    chassis.straight(-200)
     turn_to(0)
+    chassis.curve(420, 45)
+    turn_to(0)
+    chassis.straight(-300)
     chassis.straight(200, then=Stop.NONE)
-    chassis.curve(700, -50)
+    chassis.settings(500)
+    chassis.curve(300, -45,then=Stop.NONE)
+    chassis.straight(500, then=Stop.NONE)
+
 
 
     # chassis.curve(200, 180)
@@ -253,7 +262,7 @@ def green():
 
 
 
-print(str((hub.battery.current() / 2000) * 100) + "% Battery")
+# print(str((hub.battery.current() / 2000) * 100) + "% Battery")
 
 
 # Run selection
