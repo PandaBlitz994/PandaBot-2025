@@ -92,10 +92,20 @@ def turn_to(angle):
 # print(hub.battery.voltage())
 
 
-def straight_time(power, time):
-    right_wheel.dc(power)
-    left_wheel.dc(power)
-    wait(time)
+def straight_time(speed, time):
+    timer = StopWatch()
+    last = chassis.settings()[0]
+    chassis.settings(speed)
+    
+    while timer.time() < time:
+        if speed > 0:
+            chassis.straight(1000, wait=False)
+        else:
+            chassis.straight(-1000, wait=False)
+    chassis.stop()
+
+    chassis.settings(last)
+
 
 
 # runs
@@ -216,47 +226,47 @@ def green():
     chassis.settings(300)
     right_arm.run_time(1000, 5000, wait=False)
     hub.imu.reset_heading(0)
-    straight_time(-80, 500)  ### just reseting so itll be straigther
+    straight_time(-400, 500)  ### just reseting so itll be straigther
     hub.imu.reset_heading(0)
     chassis.settings(300)
     chassis.straight(50, then=Stop.NONE)
-    chassis.curve(320, 60)
+    chassis.curve(335, 60)
     turn_to(0)
     chassis.straight(350, then=Stop.NONE)
     chassis.curve(390, -33, then=Stop.NONE)
     chassis.curve(150, 33)
-    chassis.settings(300)
+    chassis.settings(150)
     chassis.straight(-100)
     till_black(-70, 0)
     chassis.straight(-175)
     chassis.settings(75)
-    chassis.straight(300)
+    chassis.straight(200)
     chassis.settings(300)
-    chassis.straight(125)
-    turn_to(0)
-    chassis.curve(350, 40)
+    chassis.straight(225,then=Stop.NONE)
+    chassis.curve(375, 40)
     turn_to(160)
-    chassis.straight(190)
+    chassis.straight(220)
     turn_to(135)
-    right_arm.run_angle(-1000, 350, wait=False)
-    straight_time(75, 2000)
+    right_arm.run_angle(-1000, 500, wait=False)
+    wait(550)
+    straight_time(200, 2500)
     chassis.straight(-70)
-    right_arm.run_time(-700, 5000, wait=False)
-    wait(700)
-    chassis.straight(80)
-    right_arm.run_angle(200, 270, wait=False)
-    wait(800)
-    chassis.settings(100)
+    right_arm.run_time(-300, 1000, wait=False)
+    chassis.settings(140)
+    chassis.straight(200)
+    right_arm.run_angle(200, 350, wait=False)
+    wait(500)
+    chassis.settings(200)
     chassis.straight(-200)
     chassis.settings(300)
     turn_to(0)
-    chassis.curve(420, 45)
+    chassis.curve(475, 45)
     turn_to(0)
-    chassis.settings(180)
-    chassis.straight(-260)
+    chassis.settings(120)
+    chassis.straight(-320)
     chassis.straight(200, then=Stop.NONE)
     chassis.settings(500)
-    chassis.curve(300, -45, then=Stop.NONE)
+    chassis.curve(200, -45, then=Stop.NONE)
     chassis.straight(500, then=Stop.NONE)
 
 
