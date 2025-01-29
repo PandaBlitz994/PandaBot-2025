@@ -213,6 +213,7 @@ def yellow():
     chassis.straight(-320)
     turn_to(-90)
     chassis.straight(500)
+    chassis.straight(-250)
 
 
 def green():
