@@ -125,13 +125,14 @@ def blue():
     chassis.straight(-280)  # cril
     chassis.curve(100, 50)
     # chassis.turn(86)
-    chassis.straight(-200)  # plankton
+    chassis.straight(-200)  # cril
     # right_arm.run_angle(200,-100, wait=False)
     # chassis.straight(100)
     # chassis.turn(30)
-    chassis.curve(125, 42)
+    chassis.curve(250, 60)
+    turn_to(-90)
     # wait(10000)
-    chassis.straight(-100)
+    straight_time(-200, 3000)
     chassis.straight(150)
     # chassis.curve(100, 90, then=Stop.NONE)
     # turn_to(-135)
