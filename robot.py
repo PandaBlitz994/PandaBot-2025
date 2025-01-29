@@ -194,25 +194,10 @@ def red():
 
 
 def red_2():
-    # hub.imu.reset_heading(0)
-    # chassis.settings(300)
-    # chassis.straight(1100)
-    # chassis.straight(-200)
-    # chassis.curve(-75, 90, then=Stop.NONE)
-    # chassis.straight(200)
-    # turn_to(-90)
-    # chassis.curve(-220, 90)
-    # chassis.straight(-220)
-    # chassis.straight(50, then=Stop.NONE)
-    # chassis.settings(400)
-    # chassis.curve(170, 180)
-    # turn_to(0)
-    # chassis.straight(300, then=Stop.NONE)
-    # chassis.curve(500, 50, then=Stop.NONE)
-    # chassis.straight(400)
-    chassis.settings(1000)
-    chassis.straight(1000, then=Stop.NONE)
-    chassis.curve(1000, 45)
+    chassis.settings(200)
+    chassis.straight(500)
+    left_arm.run_time(-1000, 1500)
+    chassis.straight(-1000, then=Stop.NONE)
 
 
 def yellow():
