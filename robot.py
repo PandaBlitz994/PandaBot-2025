@@ -96,7 +96,7 @@ def straight_time(speed, time):
     timer = StopWatch()
     last = chassis.settings()[0]
     chassis.settings(speed)
-    
+
     while timer.time() < time:
         if speed > 0:
             chassis.straight(1000, wait=False)
@@ -105,7 +105,6 @@ def straight_time(speed, time):
     chassis.stop()
 
     chassis.settings(last)
-
 
 
 # runs
@@ -201,10 +200,19 @@ def red_2():
 
 
 def yellow():
-    chassis.settings(50)
-    chassis.straight(120)
-    chassis.settings(200)
-    chassis.straight(-200)
+    straight_time(-500, 500)
+    chassis.settings(300)
+    chassis.straight(30, then=Stop.NONE)
+    chassis.curve(300, -45, then=Stop.NONE)
+    chassis.straight(500, then=Stop.NONE)
+    chassis.curve(850, -20)
+    turn_to(-45)
+    chassis.straight(200)
+    straight_time(300, 1500)
+    right_arm.run_time(-1000, 2500)
+    chassis.straight(-320)
+    turn_to(-90)
+    chassis.straight(500)
 
 
 def green():
@@ -227,7 +235,7 @@ def green():
     chassis.settings(75)
     chassis.straight(200)
     chassis.settings(300)
-    chassis.straight(225,then=Stop.NONE)
+    chassis.straight(225, then=Stop.NONE)
     chassis.curve(375, 40)
     turn_to(160)
     chassis.straight(220)
