@@ -18,7 +18,7 @@ chassis.use_gyro(True)
 DriveBase.settings(chassis, 200)
 
 
-#default:
+# default:
 
 chassis.settings(200, 750, 150, 750)
 # Setting detectebale colors for back light sensor
@@ -148,13 +148,13 @@ def blue():
     right_arm.run_angle(500, 300)  # boat done
     chassis.straight(-235)
     turn_to(135)
-    straight_time(-200, 2000) # imposter dropped
+    straight_time(-200, 2000)  # imposter dropped
     right_arm.run_angle(200, -150, wait=False)
     chassis.straight(75)
     chassis.curve(120, 90)
     chassis.straight(-60)
     turn_to(180)
-    chassis.straight(-575, then=Stop.NONE) # crils picked up
+    chassis.straight(-575, then=Stop.NONE)  # crils picked up
     right_arm.run_time(-500, 1000, wait=False)
     chassis.curve(300, 45)
     right_arm.run_time(500, 1000, wait=False)
@@ -163,8 +163,9 @@ def blue():
     chassis.straight(30)
     turn_to(-80)
     right_arm.run_time(-200, 1000, wait=False)
-    straight_time(-130, 3500) # plankton stolen
+    straight_time(-130, 2500)  # plankton stolen
     chassis.straight(100)
+    right_arm.run_angle(500, 300, wait=False)
     turn_to(0)
     chassis.settings(500)
     chassis.straight(-400, then=Stop.NONE)
@@ -197,12 +198,12 @@ def black():
     chassis.straight(260)
     chassis.settings(straight_speed=250)
     right_arm.run_angle(-100, 110, wait=False)
-    chassis.straight(-165)
+    chassis.straight(-145)
     # PUT THE GUY WHERE HE BELONGS!
     turn_to(-90)
-    chassis.settings(turn_rate=25, straight_speed=320, straight_acceleration = 400)
+    chassis.settings(turn_rate=25, straight_speed=320, straight_acceleration=400)
     chassis.straight(-1330)
-    chassis.settings(straight_acceleration = 750)
+    chassis.settings(straight_acceleration=750)
     turn_to(-135)
     straight_time(-200, 2500)
     chassis.settings(500, turn_rate=400)
