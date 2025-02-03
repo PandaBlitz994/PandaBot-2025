@@ -194,7 +194,7 @@ def black():
     # Zorek the guy because we dont do the thing you have to put it in his place
     # right_arm.run_time(300, 3000, wait=False)
     # Dolphin
-    chassis.settings(straight_speed=300)
+    chassis.settings(straight_speed=350)
     chassis.straight(260)
     chassis.settings(straight_speed=250)
     right_arm.run_angle(-100, 110, wait=False)
@@ -202,7 +202,7 @@ def black():
     # PUT THE GUY WHERE HE BELONGS!
     turn_to(-90)
     chassis.settings(turn_rate=25, straight_speed=320, straight_acceleration=400)
-    chassis.straight(-1350)
+    chassis.straight(-1335)
     chassis.settings(straight_acceleration=750)
     turn_to(-135)
     straight_time(-200, 2500)
