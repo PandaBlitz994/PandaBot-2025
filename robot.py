@@ -148,7 +148,7 @@ def blue():
     right_arm.run_angle(500, 300)  # boat done
     chassis.straight(-235)
     turn_to(135)
-    straight_time(-200, 2000)  # imposter dropped
+    straight_time(-200, 1800)  # imposter dropped
     right_arm.run_angle(200, -150, wait=False)
     chassis.straight(75)
     chassis.curve(120, 90)
@@ -163,12 +163,12 @@ def blue():
     chassis.straight(30)
     turn_to(-80)
     right_arm.run_time(-200, 1000, wait=False)
-    straight_time(-130, 2500)  # plankton stolen
+    straight_time(-130, 3000)  # plankton stolen
     chassis.straight(100)
     right_arm.run_angle(500, 300, wait=False)
     turn_to(0)
     chassis.settings(500)
-    chassis.straight(-400, then=Stop.NONE)
+    chassis.straight(-300, then=Stop.NONE)
     chassis.curve(-300, 45, then=Stop.NONE)
     chassis.straight(-500)
     # home. run 1.
@@ -189,8 +189,8 @@ def black():
     chassis.settings(straight_speed=250)
     # Picks up the guy
     right_arm.run_time(300, 1000)
-    chassis.straight(-100)
-    turn_to(-45)
+    chassis.straight(-60)
+    turn_to(-55)
     # Zorek the guy because we dont do the thing you have to put it in his place
     # right_arm.run_time(300, 3000, wait=False)
     # Dolphin
@@ -198,13 +198,13 @@ def black():
     straight_time(350, 1200)
     chassis.settings(straight_speed=250)
     right_arm.run_angle(-100, 110, wait=False)
-    chassis.straight(-145)
+    chassis.straight(-130)
     # PUT THE GUY WHERE HE BELONGS!
     turn_to(-90)
     chassis.settings(turn_rate=40, straight_speed=320, straight_acceleration=400)
-    chassis.straight(-1300)
+    chassis.straight(-1260)
     chassis.settings(straight_acceleration=750)
-    turn_to(-125)
+    turn_to(-130)
     straight_time(-120, 3200)
     chassis.settings(500, turn_rate=400)
     chassis.curve(200, -30, then=Stop.NONE)
@@ -221,7 +221,7 @@ def red():
     chassis.curve(500, 35, then=Stop.NONE)
     chassis.straight(200)
     left_arm.run_time(1000, 2000)
-    chassis.curve(-500, 15, then=Stop.NONE)
+    chassis.curve(-500, 35, then=Stop.NONE)
     chassis.straight(-1000)
     # chassis.use_gyro(False)
 
@@ -245,7 +245,7 @@ def yellow():
     turn_to(-45)
     straight_time(300, 1500)
     right_arm.run_time(-1000, 2500)
-    chassis.straight(-320)
+    chassis.straight(-300)
     turn_to(-90)
     chassis.straight(400)
     chassis.straight(-250)
@@ -259,7 +259,7 @@ def green():
     hub.imu.reset_heading(0)
     chassis.settings(300)
     chassis.straight(50, then=Stop.NONE)
-    chassis.curve(300, 60)
+    chassis.curve(330, 60)
     turn_to(0)
     chassis.straight(350, then=Stop.NONE)
     chassis.curve(390, -31, then=Stop.NONE)
@@ -295,8 +295,10 @@ def green():
     turn_to(0)
     chassis.curve(500, 45)
     turn_to(0)
+    chassis.settings(200)
+    chassis.straight(-150) 
     chassis.settings(80)
-    chassis.straight(-380)
+    chassis.straight(-230)
     chassis.settings(300, 500)
     chassis.straight(200, then=Stop.NONE)
     chassis.settings(500, 750)
