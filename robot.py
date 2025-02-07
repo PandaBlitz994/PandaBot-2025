@@ -148,7 +148,7 @@ def blue():
     right_arm.run_angle(500, 300)  # boat done
     chassis.straight(-235)
     turn_to(135)
-    straight_time(-200, 1800)  # imposter dropped
+    straight_time(-200, 2000)  # imposter dropped
     right_arm.run_angle(200, -150, wait=False)
     chassis.straight(75)
     chassis.curve(120, 90)
@@ -163,12 +163,12 @@ def blue():
     chassis.straight(30)
     turn_to(-80)
     right_arm.run_time(-200, 1000, wait=False)
-    straight_time(-130, 3000)  # plankton stolen
+    straight_time(-130, 2750)  # plankton stolen
     chassis.straight(100)
     right_arm.run_angle(500, 300, wait=False)
     turn_to(0)
     chassis.settings(500)
-    chassis.straight(-300, then=Stop.NONE)
+    chassis.straight(-400, then=Stop.NONE)
     chassis.curve(-300, 45, then=Stop.NONE)
     chassis.straight(-500)
     # home. run 1.
@@ -296,7 +296,7 @@ def green():
     chassis.curve(500, 45)
     turn_to(0)
     chassis.settings(200)
-    chassis.straight(-150) 
+    chassis.straight(-150)
     chassis.settings(80)
     chassis.straight(-230)
     chassis.settings(300, 500)
