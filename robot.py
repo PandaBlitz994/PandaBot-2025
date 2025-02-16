@@ -220,34 +220,32 @@ def red():
     hub.imu.reset_heading(0)
     chassis.curve(500, 35, then=Stop.NONE)
     chassis.straight(200)
-    left_arm.run_time(1000, 2000)
+    left_arm.run_time(1000, 1000)
     chassis.curve(-500, 35, then=Stop.NONE)
     chassis.straight(-1000)
     # chassis.use_gyro(False)
 
 
 def red_2():
-    chassis.settings(350)
-    chassis.straight(520)
-    left_arm.run_time(-1000, 1200)
-    # left_arm.run_angle(300, 150)
-    chassis.settings(550)
-    chassis.straight(-1000, then=Stop.NONE)
+    chassis.settings(70)
+    chassis.straight(100)
+    chassis.straight(-170)
 
 
 def yellow():
     straight_time(-500, 500)
     chassis.settings(350)
     chassis.straight(30, then=Stop.NONE)
-    chassis.curve(300, -45, then=Stop.NONE)
+    chassis.curve(350, -45, then=Stop.NONE)
     chassis.straight(500, then=Stop.NONE)
     chassis.curve(850, -20)
     turn_to(-45)
     straight_time(300, 1500)
-    right_arm.run_time(-1000, 2500)
-    chassis.straight(-300)
+    right_arm.run_time(-1000, 1300)
+    wait(170)
+    chassis.straight(-290)
     turn_to(-90)
-    chassis.straight(400)
+    chassis.straight(370)
     chassis.straight(-250)
 
 
@@ -330,7 +328,7 @@ def green():
     chassis.straight(55)
     chassis.settings(100)
     chassis.straight(-300)
-    chassis.curve(-200, 4 - 5)
+    chassis.curve(-200, -45)
     turn_to(90)
     chassis.settings(900)
     chassis.straight(350, then=Stop.NONE)
