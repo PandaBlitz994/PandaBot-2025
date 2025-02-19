@@ -227,9 +227,16 @@ def red():
 
 
 def red_2():
-    chassis.settings(70)
-    chassis.straight(100)
-    chassis.straight(-170)
+    chassis.straight(200)
+    left_arm.run_time(500, 5000, wait= False)
+    right_arm.run_time(500, 3000)
+    wait(2000)
+    left_arm.run_time(-800, 2000)
+    left_arm.run_time(500, 2000, wait= False)
+    chassis.straight(-240)
+    chassis.turn(55)
+    chassis.straight(200)
+    left_arm.run_time(-7000, 2500)
 
 
 def yellow():
@@ -311,7 +318,7 @@ def green():
     chassis.curve(200, 90, then=Stop.NONE)
     turn_to(90)
     chassis.settings(80)
-    chassis.straight(280)
+    chassis.straight(290)
     turn_to(45)
     chassis.settings(200)
     right_arm.run_angle(-270, 300, wait=False)
