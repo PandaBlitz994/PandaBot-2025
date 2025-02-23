@@ -180,11 +180,12 @@ def blue():
 def black():
     hub.imu.reset_heading(0)
     chassis.settings(300)
-    chassis.straight(250)
+    chassis.straight(250, then=Stop.NONE)
     chassis.curve(400, -45)
-    chassis.straight(230)
+    chassis.straight(210)
     turn_to(-135)
     left_arm.run_time(800, 2000)
+    left_arm.run_time(-800, 300)
     chassis.straight(300)
     left_arm.run_time(-800, 5000, wait=False)
     right_arm.run_time(700, 3000)
@@ -200,13 +201,27 @@ def black():
 
 def red():
     ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
-    chassis.settings(600)
-    hub.imu.reset_heading(0)
-    chassis.curve(500, 35, then=Stop.NONE)
-    chassis.straight(200)
-    left_arm.run_time(1000, 1000)
-    chassis.curve(-500, 35, then=Stop.NONE)
+    # chassis.settings(600)
+    # hub.imu.reset_heading(0)
+    # chassis.curve(500, 35, then=Stop.NONE)
+    # chassis.straight(200)
+    # left_arm.run_time(1000, 1000)
+    # chassis.curve(-500, 35, then=Stop.NONE)
+    # chassis.straight(-1000)
+    chassis.settings(400)
+    left_arm.run_time(-1000, 1000,wait=False)
+    chassis.straight(200,then=Stop.NONE)
+    chassis.curve(200, -35)
+    chassis.settings(straight_acceleration  =300)
+    chassis.straight(350)
+    left_arm.run_time(1000, 2000)
+    left_arm.run_time(-1000, 700,wait=False)
+    chassis.straight(500)
+    wait(20)
+    chassis.straight(-350, then=Stop.NONE)
+    chassis.curve(-300, -50, then=Stop.NONE)
     chassis.straight(-1000)
+
     # chassis.use_gyro(False)
 
 
@@ -225,15 +240,27 @@ def red_2():
 
 def yellow():
     hub.imu.reset_heading(0)
-    chassis.settings(350)
+    chassis.settings(300)
     chassis.straight(100, then=Stop.NONE)
     chassis.curve(300, -30, then=Stop.NONE)
-    chassis.straight(300)
+    chassis.straight(280)
     turn_to(-135)
     chassis.settings(170)
     straight_time(-170, 3500)
-    chassis.straight(250)
+    chassis.straight(230)
     turn_to(-90)
+    chassis.straight(190)
+    chassis.curve(300, 45)
+    turn_to(-45)
+    straight_time(300, 1500)
+    right_arm.run_time(-2000, 1300)
+    wait(170)
+    chassis.straight(-150)
+    turn_to(-90)
+    chassis.curve(350, -30)
+    turn_to(-90)
+    chassis.straight(250)
+    
     
 
 
@@ -305,7 +332,7 @@ def green():
     chassis.settings(250)
     chassis.straight(100, then=Stop.NONE)
     chassis.curve(200, 90, then=Stop.NONE)
-    turn_to(90)
+    # turn_to(90)
     chassis.settings(80)
     chassis.straight(420)
     chassis.curve(-100, 45)
