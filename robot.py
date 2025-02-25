@@ -72,7 +72,7 @@ def till_black(speed, turn_rate):
     chassis.drive(speed, turn_rate)
 
     while back_color.reflection() > 20:
-        print(back_color.color())
+        # print(back_color.color())
         pass
 
     chassis.stop()
@@ -350,7 +350,7 @@ def green():
     right_arm.run_angle(1000, 1000, wait=False)
     wait(700)
     chassis.settings(200)
-    chassis.straight(-230)
+    chassis.straight(-200)
     turn_to(90)
     chassis.straight(350)
     till_black(80, 0)
