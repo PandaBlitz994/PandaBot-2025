@@ -179,25 +179,24 @@ def blue():
 
 def black():
     hub.imu.reset_heading(0)
-    chassis.settings(300)
+    chassis.settings(400, 630)
     chassis.straight(250, then=Stop.NONE)
-    chassis.curve(400, -45)
+    chassis.curve(400, -45, then=Stop.NONE)
     chassis.straight(200)
     turn_to(-135)
-    left_arm.run_time(-800, 2000)
-    left_arm.run_time(800, 300)
+    left_arm.run_time(-800, 1200)
+    chassis.settings(straight_acceleration = 300)
     chassis.straight(300)
-    left_arm.run_time(400, 5000, wait=False)
-    right_arm.run_time(700, 3000)
-    wait(2000)
+    chassis.settings(straight_acceleration = 630)
+    left_arm.run_time(600, 4000, wait=False)
+    right_arm.run_time(1000, 3000)
+    wait(1000)
     left_arm.run_time(-800, 2000)
-    left_arm.run_time(-500, 2000, wait=False)
-    chassis.straight(-240)
-    chassis.turn(55)
-    chassis.straight(200)
-    left_arm.run_time(-7000, 2500)
-    chassis.straight(-100)
-
+    left_arm.run_time(500, 2000, wait=False)
+    chassis.straight(-250)
+    turn_to(170)
+    chassis.settings(1000, straight_acceleration = 900)
+    chassis.straight(1500)
 
 def red():
     ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
