@@ -115,10 +115,32 @@ def turn_to(angle):
         chassis.turn(deg_to_turn)
 
 
+def gyro_abs(target, base_speed, kp=0.16, then: Stop = Stop.HOLD):
+    """rizzes up the robot to a sigma location."""
+    STOP_RANGE = 0.1
+    while not (
+        hub.imu.heading() - STOP_RANGE < target < hub.imu.heading() + STOP_RANGE
+    ):
+        error = (target - (hub.imu.heading() % 360)) % 360
+        speed = base_speed + (error * kp)
+        direction = "left" if error > 180 else "right"
+        if direction == "left":
+            left_wheel.dc(-speed)
+            right_wheel.dc(speed)
+        else:
+            left_wheel.dc(speed)
+            right_wheel.dc(-speed)
+
+    if then == Stop.HOLD:
+        left_wheel.hold()
+        right_wheel.hold()
+    else:
+        chassis.brake()
 # while "1+1 = 3" == False:  # change to true for testing colors
 #     print(back_color.hsv())
 # print(hub.battery.voltage())
-
+gyro_abs(100, 50)
+chassis.straight(300)
 
 def straight_time(speed, time):
     timer = StopWatch()
@@ -137,7 +159,7 @@ def straight_time(speed, time):
 
 # runs
 def blue():
-    chassis.settings(350)
+    chassis.settings(350, turn_rate = 100)
     hub.imu.reset_heading(0)
     right_arm.run_angle(200, -170, wait=False)
     chassis.straight(310)
@@ -146,33 +168,20 @@ def blue():
     chassis.straight(-100)
     chassis.straight(130)
     right_arm.run_angle(500, 300)  # boat done
-    chassis.straight(-235)
+    chassis.straight(-220)
     turn_to(135)
     straight_time(-200, 2000)  # imposter dropped
     right_arm.run_angle(200, -150, wait=False)
     chassis.straight(15)
     chassis.curve(120, 90)
-    chassis.straight(-120)
-    chassis.straight(60)
+    chassis.straight(-180)
+    chassis.straight(70)
     turn_to(180)
-    chassis.straight(-650, then=Stop.NONE)  # crils picked up
-    left_arm.run_time(-600, 5000)
-    right_arm.run_time(-500, 1000, wait=False)
-    chassis.curve(300, 45)
-    right_arm.run_time(500, 1000, wait=False)
-    chassis.straight(-270)  # picked up cril
-    chassis.curve(250, 70, then=Stop.NONE)
-    chassis.straight(30)
-    turn_to(-80)
-    right_arm.run_time(-200, 1000, wait=False)
-    straight_time(-130, 2750)  # plankton stolen
-    chassis.straight(100)
-    right_arm.run_angle(500, 300, wait=False)
-    turn_to(0)
-    chassis.settings(500)
-    chassis.straight(-400, then=Stop.NONE)
-    chassis.curve(-300, 45, then=Stop.NONE)
-    chassis.straight(-500)
+    turn_to(180)
+    left_arm.run_time(-580, 2000)
+    chassis.straight(150)
+    turn_to(-135)
+    
 
     # home.
 
@@ -347,23 +356,23 @@ def green():
     straight_time(100, 3000)
     right_arm.run_angle(150, 1000, wait=False)
     wait(700)
-    chassis.settings(200, 300)
-    chassis.straight(-275)
+    chassis.settings(700, 700)
+    chassis.straight(-250)
     turn_to(90)
-    chassis.straight(350)
-    till_black(80, 0)
-    chassis.settings(200, 900)
-    chassis.settings(200, 300)
-    chassis.settings(100)
-    chassis.straight(-300)
-    turn_to(60)
-    chassis.settings(300)
-    chassis.curve(600, 30, then=Stop.NONE)
-    turn_to(90)
-    chassis.settings(400)
-    chassis.straight(350, then=Stop.NONE)
-    chassis.curve(400, 45, then=Stop.NONE)
-    chassis.straight(300)
+    chassis.straight(1500)
+    # till_black(80, 0)
+    # chassis.settings(200, 900)
+    # chassis.settings(200, 300)
+    # chassis.settings(100)
+    # chassis.straight(-300)
+    # turn_to(60)
+    # chassis.settings(300)
+    # chassis.curve(600, 30, then=Stop.NONE)
+    # turn_to(90)
+    # chassis.settings(400)
+    # chassis.straight(350, then=Stop.NONE)
+    # chassis.curve(400, 45, then=Stop.NONE)
+    # chassis.straight(300)
 
 
 # print(str((hub.battery.current() / 2000) * 100) + "% Battery")
