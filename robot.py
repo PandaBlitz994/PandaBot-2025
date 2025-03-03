@@ -114,33 +114,9 @@ def turn_to(angle):
     else:
         chassis.turn(deg_to_turn)
 
-
-def gyro_abs(target, base_speed, kp=0.16, then: Stop = Stop.HOLD):
-    """rizzes up the robot to a sigma location."""
-    STOP_RANGE = 0.1
-    while not (
-        hub.imu.heading() - STOP_RANGE < target < hub.imu.heading() + STOP_RANGE
-    ):
-        error = (target - (hub.imu.heading() % 360)) % 360
-        speed = base_speed + (error * kp)
-        direction = "left" if error > 180 else "right"
-        if direction == "left":
-            left_wheel.dc(-speed)
-            right_wheel.dc(speed)
-        else:
-            left_wheel.dc(speed)
-            right_wheel.dc(-speed)
-
-    if then == Stop.HOLD:
-        left_wheel.hold()
-        right_wheel.hold()
-    else:
-        chassis.brake()
 # while "1+1 = 3" == False:  # change to true for testing colors
 #     print(back_color.hsv())
 # print(hub.battery.voltage())
-gyro_abs(100, 50)
-chassis.straight(300)
 
 def straight_time(speed, time):
     timer = StopWatch()
@@ -176,11 +152,17 @@ def blue():
     chassis.curve(120, 90)
     chassis.straight(-180)
     chassis.straight(70)
-    turn_to(180)
-    turn_to(180)
+    chassis.settings(turn_rate = 50)
+    turn_to(-179ד)
+    chassis.straight(-600)
     left_arm.run_time(-580, 2000)
-    chassis.straight(150)
-    turn_to(-135)
+    chassis.straight(250)
+    turn_to(225)
+    chassis.straight(-200)
+    chassis.straight(20)
+    chassis.curve(150, 90)
+    turn_to(-90)
+    straight_time(-170, 3000)
     
 
     # home.
