@@ -114,9 +114,11 @@ def turn_to(angle):
     else:
         chassis.turn(deg_to_turn)
 
+
 # while "1+1 = 3" == False:  # change to true for testing colors
 #     print(back_color.hsv())
 # print(hub.battery.voltage())
+
 
 def straight_time(speed, time):
     timer = StopWatch()
@@ -135,7 +137,7 @@ def straight_time(speed, time):
 
 # runs
 def blue():
-    chassis.settings(350, turn_rate = 100)
+    chassis.settings(350, turn_rate=100)
     hub.imu.reset_heading(0)
     right_arm.run_angle(200, -170, wait=False)
     chassis.straight(310)
@@ -147,13 +149,26 @@ def blue():
     chassis.straight(-220)
     turn_to(135)
     straight_time(-200, 2000)  # imposter dropped
-    right_arm.run_angle(200, -150, wait=False)
-    chassis.straight(15)
+    chassis.settings(1000)
+    chassis.straight(500)
+
+    chassis.stop()
+    # Preapering for second launch
+    while Button.RIGHT not in hub.buttons.pressed():
+        hub.display.text("...", on=100)
+        wait(10)
+    # Armed and ready
+    blue_2()
+
+
+def blue_2():
+    hub.display("B2", on=10000)
+    chassis.straight(115)
     chassis.curve(120, 90)
     chassis.straight(-180)
     chassis.straight(70)
-    chassis.settings(turn_rate = 50)
-    turn_to(-179ד)
+    chassis.settings(turn_rate=50)
+    turn_to(-179)
     chassis.straight(-600)
     left_arm.run_time(-580, 2000)
     chassis.straight(250)
@@ -163,7 +178,6 @@ def blue():
     chassis.curve(150, 90)
     turn_to(-90)
     straight_time(-170, 3000)
-    
 
     # home.
 
@@ -176,10 +190,10 @@ def black():
     chassis.straight(220)
     turn_to(-140)
     left_arm.run_time(-800, 1200)
-    chassis.settings(straight_acceleration = 300)
+    chassis.settings(straight_acceleration=300)
     chassis.straight(340, wait=False)
     wait(2000)
-    chassis.settings(straight_acceleration = 630)
+    chassis.settings(straight_acceleration=630)
     left_arm.run_time(350, 3000, wait=False)
     right_arm.run_time(1000, 3500)
     wait(500)
@@ -188,8 +202,9 @@ def black():
     right_arm.run_time(-1000, 3000)
     chassis.straight(-280)
     turn_to(155)
-    chassis.settings(1000, straight_acceleration = 900)
+    chassis.settings(1000, straight_acceleration=900)
     chassis.straight(1500)
+
 
 def red():
     ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
