@@ -30,11 +30,11 @@ Color.BLUE = Color(213, 92, 85)
 Color.GREEN = Color(154, 78, 65)
 run_colors = (
     Color.RED,
+    Color.MAGENTA,
     Color.BLUE,
     Color.GREEN,
     Color.BLACK,
     Color.YELLOW,
-    Color.MAGENTA,
     Color.WHITE,
 )
 # chassis.straight(200)
@@ -145,7 +145,7 @@ def blue():
     right_arm.run_angle(200, -150, wait=False)
     chassis.straight(-100)
     chassis.straight(130)
-    right_arm.run_angle(500, 300)  # boat done
+    right_arm.run_angle(550, 450)  # boat done
     chassis.straight(-220)
     turn_to(135)
     straight_time(-200, 2000)  # imposter dropped
@@ -162,7 +162,6 @@ def blue():
 
 
 def blue_2():
-    hub.display("B2", on=10000)
     chassis.straight(115)
     chassis.curve(120, 90)
     chassis.straight(-180)
@@ -418,7 +417,7 @@ elif selected == "K":
 elif selected == "Y":
     yellow()
 elif selected == "M":
-    red_2()
+    blue_2()
 elif selected == "W":
     left_wheel.dc(100)
     right_wheel.dc(100)
