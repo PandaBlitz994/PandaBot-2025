@@ -102,13 +102,18 @@ def till_black(speed, turn_rate):
 #         chassis.brake()
 
 
-def turn_to(angle):
+def turn_to(angle, then=Stop.HOLD):
     print(hub.imu.heading())
     start_angle = (hub.imu.heading() + 360) % 360  # 208
     print(start_angle)
     deg_to_turn = (angle - start_angle) % 360  # 242
     print(deg_to_turn)
-
+    if then == Stop.NONE:
+        if deg_to_turn >= 180:
+            chassis.turn(deg_to_turn - 360)
+        else:
+            chassis.turn(deg_to_turn)
+        return
     if deg_to_turn >= 180:
         chassis.turn(deg_to_turn - 360)
     else:
@@ -137,20 +142,23 @@ def straight_time(speed, time):
 
 # runs
 def blue():
-    chassis.settings(350, turn_rate=100)
+    chassis.settings(500, 800, turn_rate=100)
     hub.imu.reset_heading(0)
     right_arm.run_angle(200, -170, wait=False)
-    chassis.straight(310)
+    chassis.straight(280)
     chassis.turn(45)
     right_arm.run_angle(200, -150, wait=False)
     chassis.straight(-100)
-    chassis.straight(130)
-    right_arm.run_angle(550, 450)  # boat done
-    chassis.straight(-220)
-    turn_to(135)
-    straight_time(-200, 2000)  # imposter dropped
+    chassis.settings(straight_acceleration=350)
+    chassis.straight(150)
+    chassis.settings(500, 1000)
+    right_arm.run_angle(1000, 450)  # boat done
+    chassis.straight(-220, then=Stop.NONE)
+    chassis.settings(turn_rate=250)
+    turn_to(135, then=Stop.NONE)
+    straight_time(-550, 800)  # imposter dropped
     chassis.settings(1000)
-    chassis.straight(500)
+    chassis.straight(800)
 
     chassis.stop()
     # Preapering for second launch
@@ -163,17 +171,12 @@ def blue():
 
 def blue_2():
     chassis.settings(450)
-    chassis.straight(270, then=Stop.NONE)
-    chassis.curve(80, 30,then=Stop.NONE)
+    chassis.straight(300, then=Stop.NONE)
+    chassis.curve(80, 55, then=Stop.NONE)
     chassis.settings(600)
-    chassis.straight(550)
+    chassis.straight(450)
     chassis.settings(450)
-    chassis.straight(-350)
-    turn_to(65)
-    chassis.settings(600)
-    chassis.straight(270)
-    chassis.settings(450)
-    chassis.straight(-320)
+    chassis.straight(-430)
     turn_to(45)
     chassis.settings(600)
     chassis.straight(530, wait=False)
@@ -181,14 +184,14 @@ def blue_2():
     left_arm.run_time(-700, 2500)
     chassis.straight(-150)
     turn_to(135)
-    straight_time(240, 2000)
+    straight_time(240, 1000)
     chassis.straight(-100)
     turn_to(-135)
-    chassis.settings(900)
+    chassis.settings(900, 900)
     chassis.straight(220, then=Stop.NONE)
     chassis.curve(500, -50, then=Stop.NONE)
     chassis.straight(400)
-    
+
     # home.
 
 
@@ -349,24 +352,38 @@ def green():
     chassis.curve(200, 90, then=Stop.NONE)
     # turn_to(90)
     chassis.settings(80)
-    chassis.straight(340)
-    chassis.curve(-20, 45)
+    chassis.straight(300, then=Stop.NONE)
+    chassis.curve(100, 20)
     turn_to(45)
     chassis.settings(200)
     right_arm.run_angle(-640, 300, wait=False)
     wait(0)
     straight_time(200, 2500)
     chassis.straight(-40)
-    right_arm.run_time(-720, 4000, wait=False)
+    right_arm.run_time(-720, 2000, wait=False)
     wait(2000)
     chassis.settings(140)
     straight_time(100, 3000)
     right_arm.run_angle(150, 1000, wait=False)
     wait(700)
-    chassis.settings(700, 700)
-    chassis.straight(-250)
+    chassis.settings(200, 300)
+    chassis.straight(-275)
     turn_to(90)
-    chassis.straight(1500)
+    chassis.straight(350)
+    till_black(80, 0)
+    chassis.straight(15)
+    chassis.settings(200, 900)
+    chassis.settings(200, 300)
+    chassis.settings(100)
+    chassis.straight(-300)
+    turn_to(60)
+    chassis.settings(300)
+    chassis.curve(600, 30, then=Stop.NONE)
+    turn_to(90)
+    chassis.settings(400)
+    chassis.straight(350, then=Stop.NONE)
+    chassis.curve(400, 45, then=Stop.NONE)
+    chassis.straight(300)
     # till_black(80, 0)
     # chassis.settings(200, 900)
     # chassis.settings(200, 300)
