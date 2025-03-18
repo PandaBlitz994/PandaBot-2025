@@ -386,7 +386,7 @@ def yellow():
     turn_to(-90)
     chassis.curve(270, -60)
     turn_to(-90)
-    straight_time(400, 1200)
+    straight_time(400, 800)
     chassis.straight(-230)
     # chassis.curve(50, 50)
     # chassis.straight(40)
