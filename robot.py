@@ -180,7 +180,7 @@ def black():
     left_arm.run_time(350, 3000, wait=False)
     right_arm.run_time(1000, 3000)
     wait(500)
-    chassis.straight(-260)
+    chassis.straight(-250)
     turn_to(155)
     chassis.settings(1000, straight_acceleration=900)
     chassis.straight(1500)
