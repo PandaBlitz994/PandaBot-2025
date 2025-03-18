@@ -156,9 +156,12 @@ def blue():
     chassis.straight(-220, then=Stop.NONE)
     chassis.settings(turn_rate=250)
     turn_to(135, then=Stop.NONE)
+    right_arm.run_time(-500, 3000, wait=False)
     straight_time(-550, 800)  # imposter dropped
     chassis.settings(1000)
-    chassis.straight(800)
+    chassis.straight(150,then=Stop.NONE)
+    chassis.curve(200, -45, then=Stop.NONE)
+    chassis.straight(500)
 
     chassis.stop()
     # Preapering for second launch
