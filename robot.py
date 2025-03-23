@@ -139,6 +139,7 @@ def straight_time(speed, time):
 
     chassis.settings(last)
 
+
 def red():
     ## Add code that make it so if pressed Button.LEFT itll go to the second part of the run please.
     # chassis.settings(600)
@@ -165,6 +166,7 @@ def red():
 
     # chassis.use_gyro(False)
 
+
 def black():
     hub.imu.reset_heading(0)
     chassis.settings(400, 630)
@@ -184,6 +186,7 @@ def black():
     turn_to(155)
     chassis.settings(1000, straight_acceleration=900)
     chassis.straight(1500)
+
 
 def green():
     # chassis.settings(300)
@@ -258,7 +261,7 @@ def green():
     right_arm.run_angle(240, 1000, wait=False)
     wait(400)
     chassis.settings(140, 300)
-    chassis.straight(-280)
+    chassis.straight(-275)
     chassis.settings(turn_rate=80)
     turn_to(90)
     chassis.settings(300, 400)
@@ -288,6 +291,7 @@ def green():
     # chassis.curve(400, 45, then=Stop.NONE)
     # chassis.straight(300)
 
+
 def blue():
     chassis.settings(500, 800, turn_rate=100)
     hub.imu.reset_heading(0)
@@ -306,7 +310,7 @@ def blue():
     right_arm.run_time(-500, 3000, wait=False)
     straight_time(-550, 800)  # imposter dropped
     chassis.settings(1000)
-    chassis.straight(150,then=Stop.NONE)
+    chassis.straight(150, then=Stop.NONE)
     chassis.curve(200, -45, then=Stop.NONE)
     chassis.straight(500)
 
@@ -326,7 +330,7 @@ def blue_2():
     chassis.settings(600)
     chassis.straight(450)
     chassis.settings(450)
-    chassis.straight(-430)
+    chassis.straight(-400)
     turn_to(45)
     chassis.settings(600)
     chassis.straight(530, wait=False)
@@ -343,10 +347,6 @@ def blue_2():
     chassis.straight(400)
 
     # home.
-
-
-
-
 
 
 def red_2():
@@ -386,7 +386,7 @@ def yellow():
     turn_to(-90)
     chassis.curve(270, -60)
     turn_to(-90)
-    straight_time(400, 900)
+    straight_time(400, 1000)
     chassis.straight(-230)
     # chassis.curve(50, 50)
     # chassis.straight(40)
@@ -410,7 +410,6 @@ def yellow():
     # turn_to(-90)
     # chassis.straight(370)
     # chassis.straight(-250)
-
 
 
 # print(str((hub.battery.current() / 2000) * 100) + "% Battery")
@@ -461,9 +460,13 @@ elif selected == "Y":
 elif selected == "M":
     blue_2()
 elif selected == "W":
-    left_wheel.dc(100)
-    right_wheel.dc(100)
-    while "1 + 1 = 3":
-        pass
+    chassis.settings(150)
+    chassis.straight(150)
+    chassis.settings(300)
+    chassis.straight(-300)
+    # left_wheel.dc(100)
+    # right_wheel.dc(100)
+    # while "1 + 1 = 3":
+    #     pass
 
 print(selected)
