@@ -250,14 +250,6 @@ def blue():
     chassis.curve(200, -45, then=Stop.NONE)
     chassis.straight(500)
 
-    chassis.stop()
-    # Preapering for second launch
-    while Button.RIGHT not in hub.buttons.pressed():
-        hub.display.text("...", on=100)
-        wait(10)
-    # Armed and ready
-    blue_2()
-
 
 def blue_2():
     chassis.settings(450)
